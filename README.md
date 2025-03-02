@@ -1,7 +1,7 @@
 # nokodr-test-automation
 
-- name - Aditya Durugkar \n
-- email - adityadurugkar07@gmail.com \n
+- name - Aditya Durugkar 
+- email - adityadurugkar07@gmail.com 
 - college - Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering and Technology
 - degree - Bachelor of Engineering (Artificial Intelligence and Data Science)
 
