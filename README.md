@@ -1,9 +1,11 @@
 # nokodr-test-automation
 
-name - Aditya Durugkar \n
-email - adityadurugkar07@gmail.com \n
-college - Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering and Technology
-degree - Bachelor of Engineering (Artificial Intelligence and Data Science)
+- name - Aditya Durugkar \n
+- email - adityadurugkar07@gmail.com \n
+- college - Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering and Technology
+- degree - Bachelor of Engineering (Artificial Intelligence and Data Science)
+
+
 Automation Testing Assignment
 1. Basic Scripting
 2. Signup Page Validation
