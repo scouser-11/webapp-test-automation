@@ -1,28 +1,13 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
-class BaseClass:
-    driver = None
-
-    @staticmethod
-    def pre_condition():
-        BaseClass.driver = webdriver.Chrome()
-        BaseClass.driver.maximize_window()
-        BaseClass.driver.implicitly_wait(10)
-        BaseClass.driver.get("https://app-staging.nokodr.com/")
-
-    @staticmethod
-    def post_condition():
-        """Close the browser."""
-        BaseClass.driver.quit()
+from base_class import BaseClass
 
 class LoginPage(BaseClass):
 
     @staticmethod
     def login(email, password):
-        BaseClass.pre_condition()
+        BaseClass.setUp()
 
         email = email.strip()
         password = password.strip()
@@ -43,7 +28,7 @@ class LoginPage(BaseClass):
                 print(f"❌ Invalid email format for {email}.")
             else:
                 print(f"❌ Unexpected error for {email}: {error_message}")
-            BaseClass.post_condition()
+            BaseClass.tearDown()
             return False
         except:
             print(f"✅ Login successful for {email}!")
