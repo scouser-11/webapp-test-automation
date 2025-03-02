@@ -1,5 +1,15 @@
 # nokodr-test-automation
 
+name - Aditya Durugkar
+email - adityadurugkar07@gmail.com
+college - Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering and Technology
+degree - Bachelor of Engineering (Artificial Intelligence and Data Science)
+Automation Testing Assignment
+1. Basic Scripting
+2. Signup Page Validation
+3. Login Page Validation
+4. Forgot Password Validation
+
 ```
 .
 ├── base_class.py # Base test configuration (driver setup/teardown)
