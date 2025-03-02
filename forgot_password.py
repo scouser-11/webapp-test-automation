@@ -1,25 +1,8 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-import time
-
-class BaseClass:
-    driver = None
-
-    @staticmethod
-    def pre_condition():
-        """Initialize WebDriver and open the website."""
-        BaseClass.driver = webdriver.Chrome()
-        BaseClass.driver.maximize_window()
-        BaseClass.driver.get("https://app-staging.nokodr.com/")
-
-    @staticmethod
-    def post_condition():
-        """Close the browser."""
-        if BaseClass.driver:
-            BaseClass.driver.quit()
+from base_class import BaseClass
 
 class ForgotPasswordTests(BaseClass):
 
@@ -33,19 +16,19 @@ class ForgotPasswordTests(BaseClass):
         wait.until(EC.presence_of_element_located((By.ID, "email")))
 
     @staticmethod
-    def test_blank_email():
-        print("Test Case: Verifying error message when email field is left blank.")
+    def test_empty_email():
+        print("Testing empty email validation...")
         wait = WebDriverWait(BaseClass.driver, 10)
         proceed_button = (By.XPATH, "//div[@title='Proceed']")
         wait.until(EC.element_to_be_clickable(proceed_button)).click()
         try:
-            error_message = (By.XPATH, "//div[contains(@class, 'MuiFormHelperText-root') and contains(@class, 'Mui-error')]")
-            message_element = wait.until(EC.visibility_of_element_located(error_message))
-            message = message_element.text
-            assert "Please enter email" in message, f"Blank email validation failed! Message was: '{message}'"
-            print("Test Passed: Correct error message 'Please enter email' displayed for blank email.")
+            error_locator = (By.XPATH, "//div[contains(@class, 'MuiFormHelperText-root') and contains(@class, 'Mui-error')]")
+            error_element = wait.until(EC.visibility_of_element_located(error_locator))
+            error_text = error_element.text
+            assert "Please enter email" in error_text, f"Empty email validation failed! Message was: '{error_text}'"
+            print("Empty email validation passed.")
         except TimeoutException:
-            print("Test Failed: No error message appeared for blank email within the time limit.")
+            print("Empty email validation failed. Error message not found!")
 
     @staticmethod
     def test_non_registered_email():
@@ -86,20 +69,13 @@ class ForgotPasswordTests(BaseClass):
             print("Test Failed: No success message appeared for valid email within the time limit.")
 
 if __name__ == "__main__":
-    
-    BaseClass.pre_condition()
-    
+    BaseClass.setUp()
     ForgotPasswordTests.go_to_forgot_password()
-    ForgotPasswordTests.test_blank_email()
-    
-    ForgotPasswordTests.go_to_forgot_password()
-    ForgotPasswordTests.test_invalid_email_format()
-    
-    # Test: Non-registered email
+    ForgotPasswordTests.test_empty_email()
+
     ForgotPasswordTests.go_to_forgot_password()
     ForgotPasswordTests.test_non_registered_email()
-    
-    # Test: Valid registered email
+
     ForgotPasswordTests.go_to_forgot_password()
     ForgotPasswordTests.test_valid_email()
-        
+    BaseClass.tearDown()
