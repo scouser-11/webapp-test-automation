@@ -1,11 +1,13 @@
 # nokodr-test-automation
 
+```
 .
 ├── base_class.py # Base test configuration (driver setup/teardown)
 ├── forgot_password.py # Password recovery functionality tests
 ├── login.py # Comprehensive login validation tests
 ├── navigation.py # Post-login navigation verification
 └── Signup.py # User registration flow tests
+```
 
 ### Setup
 1. Clone repository
